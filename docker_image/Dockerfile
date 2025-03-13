@@ -41,7 +41,8 @@ deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main non-free contrib
 COPY requirements.txt .
 
 # 安装 Python 库
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
 
 # 安装 Playwright 浏览器
 RUN playwright install chromium \
